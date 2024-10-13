@@ -57,7 +57,8 @@ const genreComedy = '%D0%BA%D0%BE%D0%BC%D0%B5%D0%B4%D0%B8%D1%8F';
 
 const headers = {
   'Content-Type': 'application/json',
-  'X-API-KEY': 'AT06YB5-WFTM0QM-MVFEWVQ-XVTVSMY',
+  // 'X-API-KEY': 'AT06YB5-WFTM0QM-MVFEWVQ-XVTVSMY',
+  'X-API-KEY': 'RNR3YZR-BETMAQN-M9P3FTF-697X7Q6',
 };
 
 class FilmAPI {
