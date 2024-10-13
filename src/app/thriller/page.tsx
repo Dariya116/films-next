@@ -1,11 +1,11 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import FilmAPI, { FilmType } from './api/getFilms';
 import { Card } from '@/components/shared';
-import style from './home.module.scss';
+import { useEffect, useState } from 'react';
+import FilmAPI, { FilmType } from '../api/getFilms';
+import style from '../home.module.scss';
 
-export default function Home() {
+export default function Thriller() {
   const [films, setFilms] = useState<FilmType[]>([]);
 
   useEffect(() => {
@@ -16,7 +16,7 @@ export default function Home() {
     const page = Math.floor(Math.random() * 100);
 
     try {
-      const data = await FilmAPI.getFilms(page.toString());
+      const data = await FilmAPI.getThrillers(page.toString());
       setFilms(data);
     } catch (error) {
       console.log('error', error);

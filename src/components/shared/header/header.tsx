@@ -1,20 +1,24 @@
-'use client'
+'use client';
 
 import { ButtonNav } from '@/components/ui';
-import React from 'react';
+import React, { useState } from 'react';
 import style from './header.module.scss';
 import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { BurgerIcon } from '../burger/burger';
+import { BurgerNav } from '../burger-nav/burger-nav';
+
+export const filmNav = [
+  { name: 'Все фильмы', id: 1, href: '/' },
+  { name: 'Мультфильмы', id: 2, href: '/cartoon' },
+  { name: 'Триллеры', id: 3, href: '/thriller' },
+  { name: 'Комедии', id: 4, href: '/comedy' },
+];
 
 export const Header = () => {
+  const [activeBurger, setActiveBurger] = useState(false);
   const router = useRouter();
   const path = usePathname();
-  const filmNav = [
-    { name: 'Все фильмы', id: 1, href: '/' },
-    { name: 'Мультфильмы', id: 2, href: '/cartoon' },
-    { name: 'Триллеры', id: 3, href: '/thriller' },
-    { name: 'Комедии', id: 4, href: '/comedy' },
-  ];
 
   return (
     <header className={style.header}>
@@ -34,6 +38,10 @@ export const Header = () => {
             onClick={() => router.push(item.href)}
           />
         ))}
+        <div onClick={() => setActiveBurger(!activeBurger)}>
+          <BurgerIcon className={style.burger} activeBurger={activeBurger} />
+          <BurgerNav activeBurger={activeBurger} setActiveBurger={setActiveBurger} />
+        </div>
       </nav>
     </header>
   );

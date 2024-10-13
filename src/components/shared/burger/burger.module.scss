@@ -1,0 +1,10 @@
+.svg {
+  cursor: pointer;
+
+  path {
+    transition: 0.5s all;
+  }
+}
+.active path {
+  d: path('M0,0.5 L20,18 M0,0.5 L20,18 M0,18 L20,0');
+}
