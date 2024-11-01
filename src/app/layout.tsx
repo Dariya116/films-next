@@ -1,7 +1,7 @@
-import type { Metadata } from "next";
+import type { Metadata } from 'next';
 import { Nunito } from 'next/font/google';
-import "./styles/_globals.scss";
-import { Header } from "@/components/shared";
+import './styles/_globals.scss';
+import { Header } from '@/components/shared';
 
 const nunito = Nunito({
   subsets: ['cyrillic'],
@@ -10,7 +10,7 @@ const nunito = Nunito({
 });
 
 export const metadata: Metadata = {
-  title: "Films",
+  title: 'Films',
 };
 
 export default function RootLayout({

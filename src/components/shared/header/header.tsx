@@ -25,7 +25,7 @@ export const Header = () => {
       <Link href={'/'}>
         <h1 className={style.header__title}>Фильмы</h1>
       </Link>
-      <nav className={style.header__nav}>
+      <div className={style.header__nav}>
         {filmNav.map((item) => (
           <ButtonNav
             key={item.id}
@@ -38,11 +38,12 @@ export const Header = () => {
             onClick={() => router.push(item.href)}
           />
         ))}
+
         <div onClick={() => setActiveBurger(!activeBurger)}>
           <BurgerIcon className={style.burger} activeBurger={activeBurger} />
           <BurgerNav activeBurger={activeBurger} setActiveBurger={setActiveBurger} />
         </div>
-      </nav>
+      </div>
     </header>
   );
 };
