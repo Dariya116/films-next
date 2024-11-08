@@ -57,28 +57,10 @@
       &:focus {
         box-shadow: rgba(0, 0, 0, 0.3) 2px 8px 4px -6px;
       }
-      
+
       &_active {
         background-color: var(--color-blue);
       }
-
-//       @media (width <= 768px) {
-//         display: none;
-//       }
-//     }
+    }
   }
 }
-
-// .burger {
-//   display: none;
-
-//   @media (width <= 768px) {
-//     display: block;
-//     width: 30px;
-//     height: 30px;
-
-//     svg {
-//       width: 30px;
-//     }
-//   }
- }
