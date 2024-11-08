@@ -62,23 +62,23 @@
         background-color: var(--color-blue);
       }
 
-      @media (width <= 768px) {
-        display: none;
-      }
-    }
+//       @media (width <= 768px) {
+//         display: none;
+//       }
+//     }
   }
 }
 
-.burger {
-  display: none;
+// .burger {
+//   display: none;
 
-  @media (width <= 768px) {
-    display: block;
-    width: 30px;
-    height: 30px;
+//   @media (width <= 768px) {
+//     display: block;
+//     width: 30px;
+//     height: 30px;
 
-    svg {
-      width: 30px;
-    }
-  }
-}
+//     svg {
+//       width: 30px;
+//     }
+//   }
+ }

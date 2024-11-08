@@ -1,7 +1,7 @@
 'use client';
 
 import { ButtonNav } from '@/components/ui';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import style from './header.module.scss';
 import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
@@ -16,9 +16,21 @@ export const filmNav = [
 ];
 
 export const Header = () => {
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 768);
   const [activeBurger, setActiveBurger] = useState(false);
   const router = useRouter();
   const path = usePathname();
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth >= 768);
+      setActiveBurger(false);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   return (
     <header className={style.header}>
@@ -26,23 +38,27 @@ export const Header = () => {
         <h1 className={style.header__title}>Фильмы</h1>
       </Link>
       <div className={style.header__nav}>
-        {filmNav.map((item) => (
-          <ButtonNav
-            key={item.id}
-            text={item.name}
-            type={'button'}
-            className={
-              style.header__nav_button +
-              (path === item.href ? ' ' + style.header__nav_button_active : '')
-            }
-            onClick={() => router.push(item.href)}
-          />
-        ))}
-
-        <div onClick={() => setActiveBurger(!activeBurger)}>
-          <BurgerIcon className={style.burger} activeBurger={activeBurger} />
-          <BurgerNav activeBurger={activeBurger} setActiveBurger={setActiveBurger} />
-        </div>
+        {isDesktop ? (
+          <div>
+            {filmNav.map((item) => (
+              <ButtonNav
+                key={item.id}
+                text={item.name}
+                type={'button'}
+                className={
+                  style.header__nav_button +
+                  (path === item.href ? ' ' + style.header__nav_button_active : '')
+                }
+                onClick={() => router.push(item.href)}
+              />
+            ))}
+          </div>
+        ) : (
+          <div onClick={() => setActiveBurger(!activeBurger)}>
+            <BurgerIcon className={style.burger} activeBurger={activeBurger} />
+            <BurgerNav activeBurger={activeBurger} setActiveBurger={setActiveBurger} />
+          </div>
+        )}
       </div>
     </header>
   );
