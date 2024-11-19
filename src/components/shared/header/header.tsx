@@ -16,20 +16,13 @@ export const filmNav = [
 ];
 
 export const Header = () => {
-  const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 768);
+  const [isDesktop, setIsDesktop] = useState(false);
   const [activeBurger, setActiveBurger] = useState(false);
   const router = useRouter();
   const path = usePathname();
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsDesktop(window.innerWidth >= 768);
-      setActiveBurger(false);
-    };
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
+    setIsDesktop(window.innerWidth >= 768);
   }, []);
 
   return (
