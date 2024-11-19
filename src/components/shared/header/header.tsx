@@ -22,7 +22,22 @@ export const Header = () => {
   const path = usePathname();
 
   useEffect(() => {
-    setIsDesktop(window.innerWidth >= 768);
+    const handleResize = () => {
+      if (typeof window !== 'undefined' && window.innerWidth >= 768) {
+        setIsDesktop(true);
+      } else {
+        setIsDesktop(false);
+        setActiveBurger(false);
+      }
+    };
+
+    handleResize(); 
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
   return (
